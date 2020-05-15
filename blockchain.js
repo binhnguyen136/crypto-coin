@@ -79,8 +79,7 @@ class Blockchain {
                 }
             }
         }
-
-        console.log('getBalanceOfAdrees: %s', balance);
+        
         return balance;
     }
 
