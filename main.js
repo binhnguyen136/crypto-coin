@@ -37,7 +37,7 @@ console.log('--------- End first transaction ---------\n');
 
 
 /*---------- Second transaction here ----------*/
-console.log('\n--------- Start second transaction ---------');
+console.log('--------- Start second transaction ---------');
 const tx2 = new Transaction(myWalletAddress, 'address1', 50);
 tx2.signTransaction(myKey);
 ESDCoin.addTransaction(tx2);
@@ -45,7 +45,6 @@ ESDCoin.addTransaction(tx2);
 // Mine block
 ESDCoin.minePendingTransactions(myWalletAddress);
 
-console.log();
 console.log(`Balance of ESD is ${ESDCoin.getBalanceOfAddress(myWalletAddress)}`);
 console.log('--------- End second transaction ---------\n');
 /*---------- Second transaction end ----------*/
@@ -54,6 +53,6 @@ console.log('--------- End second transaction ---------\n');
 /*---------- Test hacking balance ----------*/
 ESDCoin.chain[1].transactions[0].amount = 10;
 // Check if the chain is valid
-console.log();
+
 console.log('Blockchain valid?', ESDCoin.isChainValid() ? 'Yes' : 'No');
 /*---------- End hacking balance ----------*/
