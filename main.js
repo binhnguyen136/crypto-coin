@@ -11,12 +11,12 @@ const myWalletAddress = myKey.getPublic('hex');
 
 
 /*---------- Create new instance of Blockchain class ----------*/
+console.log('\n--------- Creating my first coin! ---------');
 const ESDCoin = new Blockchain();
 
 /* Mine first block */
 ESDCoin.mineGenesisBlock(myWalletAddress);
 
-console.log();
 console.log(`Balance of ESD is ${ESDCoin.getBalanceOfAddress(myWalletAddress)}`);
 /*---------- End init new coin ----------*/
 
