@@ -51,8 +51,10 @@ console.log('--------- End second transaction ---------\n');
 
 
 /*---------- Test hacking balance ----------*/
-ESDCoin.chain[1].transactions[0].amount = 10;
-// Check if the chain is valid
-
 console.log('Blockchain valid?', ESDCoin.isChainValid() ? 'Yes' : 'No');
+
+ESDCoin.chain[1].transactions[0].amount = 5000;
+// ESDCoin.chain[1].hash = "2342345234";
+
+console.log('Blockchain valid after hacking?', ESDCoin.isChainValid() ? 'Yes' : 'No');
 /*---------- End hacking balance ----------*/

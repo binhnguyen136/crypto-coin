@@ -79,7 +79,7 @@ class Blockchain {
                 }
             }
         }
-        
+
         return balance;
     }
 
@@ -103,12 +103,17 @@ class Blockchain {
         // signatures are correct
         for (let i = 1; i < this.chain.length; i++) {
             const currentBlock = this.chain[i];
+            const lastBlock = this.chain[i-1];
 
             if (!currentBlock.hasValidTransactions()) {
                 return false;
             }
 
             if (currentBlock.hash !== currentBlock.calculateHash()) {
+                return false;
+            }
+
+            if (currentBlock.previousHash !== lastBlock.hash) {
                 return false;
             }
         }
