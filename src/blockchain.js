@@ -13,14 +13,14 @@ class Blockchain {
         return new Block(Date.parse('2017-01-01'), [], '0');
     }
 
-    mineGenesisBlock(miningRewardAddress) {
+    solveGenesisBlock(miningRewardAddress) {
         const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward);
         this.pendingTransactions.push(rewardTx);
 
         const block = new Block(Date.now(), this.pendingTransactions, Array(this.difficulty + 1).join('0'));
-        block.mineBlock(this.difficulty);
+        block.solveBlock(this.difficulty);
 
-        console.log('Block successfully mined!');
+        console.log('Block successfully solved!');
         this.chain.push(block);
 
         this.pendingTransactions = [];
@@ -30,14 +30,14 @@ class Blockchain {
         return this.chain[this.chain.length - 1];
     }
 
-    minePendingTransactions(miningRewardAddress) {
+    solvePendingTransactions(miningRewardAddress) {
         const rewardTx = new Transaction(null, miningRewardAddress, this.miningReward);
         this.pendingTransactions.push(rewardTx);
 
         const block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);
-        block.mineBlock(this.difficulty);
+        block.solveBlock(this.difficulty);
 
-        console.log('Block successfully mined!');
+        console.log('Block successfully solved!');
         this.chain.push(block);
 
         this.pendingTransactions = [];
@@ -62,7 +62,8 @@ class Blockchain {
         }
 
         this.pendingTransactions.push(transaction);
-        console.log('transaction added: %s', transaction);
+        // console.log('transaction added: ');
+        console.log(transaction);
     }
 
     getBalanceOfAddress(address) {

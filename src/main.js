@@ -14,8 +14,8 @@ const myWalletAddress = myKey.getPublic('hex');
 console.log('\n--------- Creating my first coin! ---------');
 const ESDCoin = new Blockchain();
 
-/* Mine first block */
-ESDCoin.mineGenesisBlock(myWalletAddress);
+/* Solved first block */
+ESDCoin.solveGenesisBlock(myWalletAddress);
 
 console.log(`Balance of ESD is ${ESDCoin.getBalanceOfAddress(myWalletAddress)}`);
 /*---------- End init new coin ----------*/
@@ -28,8 +28,8 @@ const tx1 = new Transaction(myWalletAddress, 'address2', 10);
 tx1.signTransaction(myKey);
 ESDCoin.addTransaction(tx1);
 
-// Mine block
-ESDCoin.minePendingTransactions(myWalletAddress);
+// Solved block
+ESDCoin.solvePendingTransactions(myWalletAddress);
 
 console.log(`Balance of ESD is ${ESDCoin.getBalanceOfAddress(myWalletAddress)}`);
 console.log('--------- End first transaction ---------\n');
@@ -42,8 +42,8 @@ const tx2 = new Transaction(myWalletAddress, 'address1', 50);
 tx2.signTransaction(myKey);
 ESDCoin.addTransaction(tx2);
 
-// Mine block
-ESDCoin.minePendingTransactions(myWalletAddress);
+// Solved block
+ESDCoin.solvePendingTransactions(myWalletAddress);
 
 console.log(`Balance of ESD is ${ESDCoin.getBalanceOfAddress(myWalletAddress)}`);
 console.log('--------- End second transaction ---------\n');
